@@ -1,0 +1,75 @@
+🖥️ Project Setup Guide:
+
+================================================================================================================
+
+1. System Specifications
+
+Hardware
+
+    CPU: Intel(R) Core(TM) i7-14700K (28 cores) @ 3.42 GHz
+
+    GPU: NVIDIA GeForce RTX 3060 @ 2.10 GHz (11.8 GB VRAM)
+
+Software
+
+    OS: Windows 11 Pro (25H2) x86_64
+
+    Build: WIN32_NT 10.0.26200.7462
+
+    PowerShell: 5.1.26100.7462
+
+    Windows Terminal: 1.23.13503.0
+
+    Desktop Window Manager: 10.0.26100.7309
+
+    Theme: Custom Dark (#680081)
+
+-------------------------------------------------------------------------------------------------------------
+
+2. CUDA Verification
+
+Run the following in Python:
+
+import torch
+print(torch.version.cuda)          # Expected: 12.x or 13.0
+print(torch.cuda.is_available())   # Expected: True
+print(torch.cuda.get_device_name(0))  # Expected: NVIDIA GeForce RTX 3060
+
+
+Output on this system (Can be CUDA 12.4 and above):
+
+    CUDA version: 12.6
+
+    CUDA available: True
+
+    GPU detected: NVIDIA GeForce RTX 3060
+
+-------------------------------------------------------------------------------------------------------------
+
+3. Virtual Environment Setup (VENV)
+
+Create and activate a virtual environment:
+
+$ python -m venv projectname
+$ source projectname/bin/activate   # On Linux/Mac
+# On Windows use: projectname\Scripts\activate
+
+Install kernel support:
+
+(venv) $ pip install ipykernel
+(venv) $ ipython kernel install --user --name=<venv-name>
+
+-------------------------------------------------------------------------------------------------------------
+
+4. Install Dependencies
+
+Make sure you have a requirements.txt file in the project root. Then run:
+
+(venv) $ pip install -r requirements.txt
+
+================================================================================================================
+
+⚠️ Special Note
+
+The notebook 4-Noha_models.ipynb was originally developed in a Conda environment.
+Running it inside a VENV may cause compatibility issues. If you encounter errors, consider recreating the Conda environment or adapting the dependencies manually.
